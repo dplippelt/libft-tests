@@ -1,0 +1,3 @@
+Copy main.c and the Makefile to the project folder and run make test
+
+Tests both mandatory and bonus part together at the moment
