@@ -6,11 +6,13 @@
 #    By: dlippelt <dlippelt@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 13:57:14 by dlippelt          #+#    #+#              #
-#    Updated: 2024/10/23 11:28:23 by dlippelt         ###   ########.fr        #
+#    Updated: 2024/12/04 13:04:01 by dlippelt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+# Change PDIR according the where the project folder is located
+PDIR = $(HOME)/codam/main/libft
+NAME = $(PDIR)/libft.a
 MAIN = main.c
 
 CC = cc
@@ -55,7 +57,9 @@ SRCS =	ft_atoi.c \
 		ft_substr.c \
 		ft_tolower.c \
 		ft_toupper.c
-OBJS = $(SRCS:.c=.o)
+FSRCS = $(addprefix $(PDIR)/, $(SRCS))
+FOBJS = $(FSRCS:.c=.o)
+
 
 BSRCS = ft_lstadd_back.c \
 		ft_lstadd_front.c \
@@ -66,24 +70,25 @@ BSRCS = ft_lstadd_back.c \
 		ft_lstmap.c \
 		ft_lstnew.c \
 		ft_lstsize.c
-BOBJS = $(BSRCS:.c=.o)
+FBSRCS = $(addprefix $(PDIR)/, $(BSRCS))
+FBOBJS = $(FBSRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(FOBJS)
 	$(AR) $(ARFLAGS) $@ $^
 
 %.o: %.c
 	$(CC) $(CFLAGS) $<
 
-bonus: $(OBJS) $(BOBJS)
+bonus: $(FOBJS) $(FBOBJS)
 	$(AR) $(ARFLAGS) $(NAME) $^
 
-test: $(SRCS) $(BSRCS) $(MAIN)
+test: $(FSRCS) $(FBSRCS) $(MAIN)
 	$(CC) $(TESTFLAGS) $^ $(LBSD)
 
 clean:
-	rm -f $(OBJS) $(BOBJS)
+	rm -f $(FOBJS) $(FBOBJS)
 	rm -f *.gch
 	rm -f *.txt
 

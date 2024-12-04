@@ -6,7 +6,7 @@
 /*   By: dlippelt <dlippelt@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 14:35:03 by dlippelt          #+#    #+#             */
-/*   Updated: 2024/10/18 12:38:13 by dlippelt         ###   ########.fr       */
+/*   Updated: 2024/12/04 13:13:37 by dlippelt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 #include <stdlib.h>
 #include <malloc.h>
 #include <limits.h>
-#include "libft.h"
+// change path below according to location of project folder
+#include "/home/dlippelt/codam/main/libft/libft.h"
 
 static void	ft_printstr(void *str, size_t n)
 {
@@ -37,7 +38,8 @@ static void	test_issomething()
 {
 	int		c;
 
-	c = -150;
+	// c = -150;
+	c = 'x';
 
 	printf("ft_isalpha('%c') = %d\n", c, ft_isalpha(c));
 	printf("isalpha('%c') = %d\n", c, isalpha(c));
@@ -383,14 +385,16 @@ static void	test_strnstr()
 	char	*little;
 	size_t	len;
 
-	/* big = "Hello, world!"; */
-	big = (void *)0;
-	/* big = NULL; */
-	/* little = "\0"; */
-	little = "fake";
-	/* little = NULL; */
-	len = 3;
-	/* len = NULL; */
+	big = "Hello, world!";
+	// big = (void *)0;
+	// big = NULL;
+
+	little = "llo";
+	// little = "\0";
+	// little = NULL;
+
+	len = 5;
+	// len = NULL;
 
 	printf("strnstr(\"%s\", \"%s\", %zu) = %s\n", big, little, len, strnstr(big, little, len));
 	printf("ft_strnstr(\"%s\", \"%s\", %zu) = %s\n", big, little, len, ft_strnstr(big, little, len));

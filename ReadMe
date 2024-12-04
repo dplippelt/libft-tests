@@ -1,3 +1,2 @@
-Copy main.c and the Makefile to the project folder and run make test
-
-Tests both mandatory and bonus part together at the moment
+1. Provide correct include path for libft.h in main.c
+2. Provide correct project directory path (PDIR) in makefile
